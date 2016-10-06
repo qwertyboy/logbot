@@ -1,6 +1,6 @@
 # logbot
 
-logbot is a basic Discord bot written in Python using the discord.py API wrapper.
+logbot is a basic Discord bot for dumping a channel's messages. It is written in Python using the discord.py API wrapper.
 
 The only dependency is discord.py which can be installed [from here.][dpy] Python 3.x is required to run the bot.
 [dpy]: https://github.com/Rapptz/discord.py

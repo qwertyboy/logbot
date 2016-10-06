@@ -2,6 +2,8 @@ import os
 import discord
 import asyncio
 
+MAXMESSAGES = 10000
+
 client = discord.Client()
 
 @client.event
@@ -26,7 +28,7 @@ async def on_message(message):
 
         # get all the messages
         tmp = await client.send_message(message.channel, 'Getting messages...')
-        async for log in client.logs_from(message.channel, limit=10000):
+        async for log in client.logs_from(message.channel, limit=MAXMESSAGES):
             msgs.append(log)
 
         #open file for writing in binary mode
