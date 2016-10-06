@@ -1,3 +1,4 @@
+import os
 import discord
 import asyncio
 
@@ -15,12 +16,12 @@ async def on_message(message):
     if message.content.startswith('!dump'):
         # get file name
         args = message.content.split()
-        if args != 2:
+        if len(args) != 2:
             print('Invalid argument list, using default file name.')
             fname = str(message.channel) + '.txt'
         else:
             fname = args[1]
-            
+
         msgs = []
 
         # get all the messages
@@ -50,5 +51,7 @@ async def on_message(message):
         # send the log to the user who requested it
         await client.send_message(message.author, 'Here is the requested log:')
         await client.send_file(message.author, 'log', filename=fname)
+        os.remove('log')
 
 client.run('bot token here')
+# https://discordapp.com/oauth2/authorize?client_id=bot-id&scope=bot&permissions=0
