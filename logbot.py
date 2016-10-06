@@ -14,7 +14,13 @@ async def on_ready():
 async def on_message(message):
     if message.content.startswith('!dump'):
         # get file name
-        fname = message.content.split()[1]
+        args = message.content.split()
+        if args != 2:
+            print('Invalid argument list, using default file name.')
+            fname = str(message.channel) + '.txt'
+        else:
+            fname = args[1]
+            
         msgs = []
 
         # get all the messages
